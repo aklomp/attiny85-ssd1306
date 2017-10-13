@@ -1,17 +1,15 @@
-BINDIR	= /opt/cross/avr/bin
-CC	= $(BINDIR)/avr-gcc
-LD	= $(BINDIR)/avr-ld
-OBJCOPY	= $(BINDIR)/avr-objcopy
-OBJDUMP	= $(BINDIR)/avr-objdump
-AVRDUDE	= avrdude
+CROSS	= /opt/cross/avr/bin/avr-
+CC	= $(CROSS)gcc
+LD	= $(CROSS)ld
+OBJCOPY	= $(CROSS)objcopy
 
 MCU	= attiny85
 F_CPU	= 8000000
 
 TARGET	= main
 
-CFLAGS	= -Os -DF_CPU=$(F_CPU)UL -mmcu=$(MCU) -Wall -std=gnu99 \
-	  -Wall -Wstrict-prototypes -Wa,-adhlns=$(<:.c=.lst)
+CFLAGS	+= -DF_CPU=$(F_CPU)UL -mmcu=$(MCU)
+CFLAGS	+= -std=c99 -Os -Wall -Wstrict-prototypes -Wa,-adhlns=$(<:.c=.lst)
 
 LDFLAGS	= -Wl,-Map=$(TARGET).map,--cref
 
@@ -35,7 +33,7 @@ img.h: img.png
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ -c $^
 
 flash: $(TARGET).hex
-	micronucleus --run $(TARGET).hex
+	micronucleus --run $^
 
 clean:
 	$(RM) $(OBJS) $(TARGET).hex $(TARGET).elf $(TARGET).map *.lst img.h
