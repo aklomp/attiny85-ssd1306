@@ -16,8 +16,11 @@ using the blue part. The I2C code is probably not standards compliant. For
 starters it doesn't use any timing delays. In this application, it happens to
 "just work".
 
-The `convert.py` script takes a b/w PNG file and outputs a C header with the
-correct bit format for the display.
+This project contains a readymade `img.h` of the cat image, to be replaced with
+your own. Use the `convert.py` script to convert your own b/w PNG image to the
+proper header format. The script takes a b/w PNG file and outputs a C header
+with the correct bit format for the display. Check the Makefile and the script
+itself for details on how it works.
 
 ## License
 
