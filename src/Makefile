@@ -1,7 +1,6 @@
-CROSS	= /opt/cross/avr/bin/avr-
-CC	= $(CROSS)gcc
-LD	= $(CROSS)ld
-OBJCOPY	= $(CROSS)objcopy
+CROSS	?= /opt/cross/avr/bin/avr-
+CC	 = $(CROSS)gcc
+OBJCOPY	 = $(CROSS)objcopy
 
 MCU	= attiny85
 F_CPU	= 8000000

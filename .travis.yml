@@ -1,0 +1,17 @@
+language: c
+
+compiler:
+  - avr-gcc
+
+addons:
+  apt:
+    packages:
+      - avr-libc
+      - binutils-avr
+      - gcc-avr
+
+env:
+  - CROSS=avr-
+
+script:
+  - make -C src
