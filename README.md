@@ -1,7 +1,5 @@
 # ATTiny85-SSD1306
 
-[![Build Status](https://travis-ci.org/aklomp/attiny85-ssd1306.svg?branch=master)](https://travis-ci.org/aklomp/attiny85-ssd1306)
-
 Display a random image on an SSD1306-based, I2C-connected
 [OLED display](http://www.banggood.com/0_96-Inch-4Pin-Blue-Yellow-IIC-I2C-OLED-Display-Module-For-Arduino-p-969144.html)
 with an ATTiny85-based
