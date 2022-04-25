@@ -14,3 +14,19 @@ jobs:
         sudo apt-get install avr-libc
     - name: Compile
       run: make
+    - name: Release ID
+      id: get-id
+      if: startsWith(github.ref, 'refs/tags/v')
+      run: |
+        project=$(echo "${{github.repository}}" | cut -d/ -f2)
+        version=$(echo "${{github.ref_name}}" | sed 's/^v//')
+        echo "::set-output name=id::${project}-${version}"
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/v')
+      with:
+        name: ${{steps.get-id.outputs.id}}
+        files: |
+          main.elf
+          main.hex
+          main.map
