@@ -2,9 +2,6 @@ name: Build
 
 on: [push]
 
-env:
-  CROSS: avr-
-
 jobs:
   Build:
     runs-on: ubuntu-latest
@@ -15,7 +12,5 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install avr-libc
-        sudo apt-get install binutils-avr
-        sudo apt-get install gcc-avr
     - name: Compile
       run: make -C src

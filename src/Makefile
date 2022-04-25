@@ -1,4 +1,4 @@
-CROSS	?= /opt/cross/avr/bin/avr-
+CROSS	?= avr-
 CC	 = $(CROSS)gcc
 OBJCOPY	 = $(CROSS)objcopy
 
