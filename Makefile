@@ -1,4 +1,4 @@
-CROSS	?= /opt/cross/avr/bin/avr-
+CROSS	?= avr-
 CC	 = $(CROSS)gcc
 OBJCOPY	 = $(CROSS)objcopy
 
@@ -8,11 +8,12 @@ F_CPU	= 8000000
 TARGET	= main
 
 CFLAGS	+= -DF_CPU=$(F_CPU)UL -mmcu=$(MCU)
-CFLAGS	+= -std=c99 -Os -Wall -Wstrict-prototypes -Wa,-adhlns=$(<:.c=.lst)
+CFLAGS	+= -std=c99 -Os -g
+CFLAGS	+= -Wall -Wstrict-prototypes -Wa,-adhlns=$(<:.c=.lst)
 
 LDFLAGS	= -Wl,-Map=$(TARGET).map,--cref
 
-SRCS	= $(wildcard *.c)
+SRCS	= $(wildcard src/*.c)
 OBJS	= $(SRCS:.c=.o)
 
 .PHONY: clean flash
