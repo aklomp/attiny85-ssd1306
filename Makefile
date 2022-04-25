@@ -13,7 +13,7 @@ CFLAGS	+= -Wall -Wstrict-prototypes -Wa,-adhlns=$(<:.c=.lst)
 
 LDFLAGS	= -Wl,-Map=$(TARGET).map,--cref
 
-SRCS	= $(wildcard *.c)
+SRCS	= $(wildcard src/*.c)
 OBJS	= $(SRCS:.c=.o)
 
 .PHONY: clean flash

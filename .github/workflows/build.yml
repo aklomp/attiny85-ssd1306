@@ -13,4 +13,4 @@ jobs:
         sudo apt-get update
         sudo apt-get install avr-libc
     - name: Compile
-      run: make -C src
+      run: make
