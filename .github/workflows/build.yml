@@ -16,6 +16,11 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install avr-libc
+        sudo apt-get install python3-png
+
+      # Generate the image header
+    - name: Generate image header
+      run: src/convert.py src/img.png > src/img.h
 
       # Compile the code
     - name: Compile
